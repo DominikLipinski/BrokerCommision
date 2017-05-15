@@ -5,10 +5,12 @@ import java.util.Scanner;
  */
 public class Commision {
     public static void main(final String[] args) {
-     Scanner sc = new Scanner(System.in);
-     String transactionType;
-     String transactionLocation;
-     Double transactionAmount;
+        Scanner sc = new Scanner(System.in);
+        String transactionType;
+        String transactionLocation;
+        Double transactionAmount;
+        Double commision;
+
         System.out.println("Is this SALE or PURCHASE?");
         transactionType = sc.nextLine();
 
@@ -19,13 +21,17 @@ public class Commision {
         transactionLocation = sc.nextLine();
 
         if (transactionType.toLowerCase().equals("sale")) {
+            if (transactionLocation.toLowerCase().equals("e")) {
+                commision = (5 / 100) * transactionAmount;
+            } else if (transactionLocation.toLowerCase().equals("c")) {
+                commision = (3.7 / 100) * transactionAmount;
+            } else if (transactionLocation.toLowerCase().equals("m")) {
+                commision = (4.2 / 100) * transactionAmount;
+            } else if (transactionType.toLowerCase().equals("purchase")) {
 
-        }
-        if else (transactionType.toLowerCase().equals("purchase")) {
-
-        }
-        else {
-            System.out.println("Please type proper type of transaction");
+            } else {
+                System.out.println("Please type proper type of transaction");
+            }
         }
     }
 }
