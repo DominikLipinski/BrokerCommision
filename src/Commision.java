@@ -9,30 +9,37 @@ public class Commision {
         String transactionType;
         String transactionLocation;
         Double transactionAmount;
-        Double commision;
+        Double commission = 0.00;
 
         System.out.println("Is this SALE or PURCHASE?");
         transactionType = sc.nextLine();
 
-        System.out.println("Whats is the amount?");
-        transactionAmount = sc.nextDouble();
-
         System.out.println("What is location of this transaction?");
         transactionLocation = sc.nextLine();
 
+        System.out.println("Whats is the amount?");
+        transactionAmount = sc.nextDouble();
+
         if (transactionType.toLowerCase().equals("sale")) {
             if (transactionLocation.toLowerCase().equals("e")) {
-                commision = (5 / 100) * transactionAmount;
+                commission = ((double) 5 / 100) * transactionAmount;
             } else if (transactionLocation.toLowerCase().equals("c")) {
-                commision = (3.7 / 100) * transactionAmount;
+                commission = (3.7 / 100) * transactionAmount;
             } else if (transactionLocation.toLowerCase().equals("m")) {
-                commision = (4.2 / 100) * transactionAmount;
-            } else if (transactionType.toLowerCase().equals("purchase")) {
-
-            } else {
-                System.out.println("Please type proper type of transaction");
+                commission = (4.2 / 100) * transactionAmount;
+            }
+        } else if (transactionType.toLowerCase().equals("purchase")) {
+            if (transactionLocation.toLowerCase().equals("e")) {
+                commission = (6.3 / 100) * transactionAmount;
+            } else if (transactionLocation.toLowerCase().equals("c")) {
+                commission = (4.3 / 100) * transactionAmount;
+            } else if (transactionLocation.toLowerCase().equals("m")) {
+                commission = (5.7 / 100) * transactionAmount;
             }
         }
+
+        System.out.printf("For %s of $%.2f amount, at %s location, the commission will be: $%.2f.",
+                transactionType.toLowerCase(), transactionAmount, transactionLocation.toUpperCase(), commission);
     }
 }
 
